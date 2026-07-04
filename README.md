@@ -9,13 +9,13 @@ What it does
 - Look up common medicines and compare prices across Apollo Pharmacy, Medplus, and PharmEasy
 - Voice input option if you'd rather speak than type
 
-Results are sorted so the better value options show up first, based on a simple cost-to-rating score.
+Results are sorted so the better value options show up first, based on a simple cost to rating score.
 
 Files in this repo
 
 - app.py – the Flask app, all the routes and scoring logic live here
-- sttts.py – a small standalone script for speech-to-text/text-to-speech
-- hospital.json and procedure.json – the datasets the app reads from
+- sttts.py – a small standalone script for speech-to-text,text-to-speech
+- hospital.json and procedure.json - the datasets the app reads from
 - requirements.txt – Python packages needed
 - index.html, diseases.html, text.html, medicine_price.html, amaan.html, about.html – the page templates
 - style.css, index.css, index.js – styling and frontend behavior
