@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Real-time Speech-to-Text Converter</title>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='index.css') }}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <script>
+    function startRecording() {
+      var recognition = new webkitSpeechRecognition();
+      recognition.continuous = true;
+      recognition.interimResults = true;
+
+      recognition.onresult = function(event) {
+        var result = event.results[event.results.length - 1];
+        var transcript = result[0].transcript;
+        document.getElementById('text').textContent = transcript;
+      };
+
+      recognition.onend = function() {
+        document.getElementById('record-button').textContent = 'Start Recording';
+      };
+
+      recognition.start();
+    }
+  </script>
+</head>
+<body>
+  <div class="box">
+    <div class="container">
+      <h1>Healthcare Price Transparency</h1>
+    </div>
+    <div class="container2">
+      <ul>
+        <li><a href="/HPT">Home</a></li>
+        <li><a href="/HPT/text">Disease Estimates</a></li>
+        <li><a href="/HPT/text2">Procedure</a></li>
+        <li><a href="/HPT/voice">Voice</a></li>
+        <li><a href="/HPT/about">About</a></li>
+      </ul>
+    </div>
+  <h1>Real-time Speech-to-Text Converter</h1>
+
+  <button onclick="startRecording()" id="record-button"><i class="fas fa-microphone"></i></button>
+
+  <h2>Recognized Text:</h2>
+  <div id="text"></div>
+</body>
+</html>

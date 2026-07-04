@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Hospital Search</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='index.css') }}">
+</head>
+
+<body>
+    <div class="box">
+        <div class="container">
+            <h1>Healthcare Price Transparency</h1>
+        </div>
+        <div class="container2">
+            <ul>
+                <li><a href="/HPT/">Home</a></li>
+                <li><a href="/HPT/text">Disease Estimates</a></li>
+                <li><a href="/HPT/text2">Procedure</a></li>
+                <li><a href="/HPT/voice">Voice</a></li>
+                <li><a href="/HPT/about">About</a></li>
+            </ul>
+        </div>
+        <center>
+            <h1>Find the Best Hospital for Your Treatment</h1>
+            <form method="post">
+                <label for="disease">Enter a Procedure: </label>
+                <input type="text" name="disease" required>
+                <input type="submit" value="Search">
+            </form>
+
+            {% if hospitals %}
+            <h2>Results for {{ disease }}</h2>
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>Hospital Name</th>
+                        <th>Average Cost</th>
+                        <th>Rating</th>
+                        <!-- <th>Score</th> -->
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for hospital, score in hospitals %}
+                    <tr>
+                        <td>{{ hospital['hospital_name'] }}</td>
+                        <td>Rs.{{ hospital['diseases'][disease]['cost'] }}</td>
+                        <td>{{ hospital['diseases'][disease]['rating'] }}</td>
+                        <!-- <td>{{ score }}</td> -->
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% endif %}
+        </center>
+
+</body>
+
+</html>
